@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 1.75f))
             {
+                Debug.Log("I am near a " + hit.collider.tag);
                 if(hit.collider.tag == "Door")
                 {
                     hit.collider.gameObject.SetActive(false);

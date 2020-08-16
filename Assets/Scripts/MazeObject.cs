@@ -189,7 +189,10 @@ public class MazeObject : MonoBehaviour
         westTx[rx, 3] = 8; westTx[rx + 5, 3] = 8;
         westTx[rx, 4] = 8; westTx[rx + 5, 4] = 8;
         floorTx[rx + 1, ry + 1] = 11; floorTx[rx + 3, ry + 1] = 11; //Pillars
-        floorTx[rx + 1, ry + 3] = 11; floorTx[rx + 3, ry + 3] = 11;        
+        floorTx[rx + 1, ry + 3] = 11; floorTx[rx + 3, ry + 3] = 11;
+        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3((rx + 2) * 2, 0, (ry + 1) * 2); //place the player
+        GameObject.FindGameObjectWithTag("Player").transform.rotation = Quaternion.identity; //Rotate the player
+
 
         //Generate Entry Room
         bool done = false;
@@ -212,8 +215,8 @@ public class MazeObject : MonoBehaviour
         westTx[rx, ry+1] = 3; westTx[rx + 3, ry+1] = 3; 
         westTx[rx, ry+2] = 8; westTx[rx + 3, ry+2] = 8;
         floorTx[rx, ry] = 11; floorTx[rx + 2, ry] = 11; //Pillars
-        floorTx[rx, ry+2] = 11; floorTx[rx + 2, ry+2] = 11;
-        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3((rx + 1)*2, 0, (ry + 1)*2); //place the player
+        floorTx[rx, ry+2] = 11; floorTx[rx + 2, ry+2] = 11;        
+        Instantiate(prefabs[10], new Vector3((rx + 1) * 2, 0, (ry + 1) * 2), Quaternion.identity);
 
         //Generate key1 room
         done = false;

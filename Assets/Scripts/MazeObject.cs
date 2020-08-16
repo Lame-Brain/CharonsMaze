@@ -253,6 +253,7 @@ public class MazeObject : MonoBehaviour
         westTx[rx, ry + 5] = 8; westTx[rx + 6, ry + 5] = 8; 
         floorTx[rx, ry] = 11; floorTx[rx + 2, ry] = 11; //Pillars
         floorTx[rx, ry+5] = 11; floorTx[rx + 5, ry + 3] = 11; floorTx[rx + 5, ry + 5] = 11;
+        Instantiate(prefabs[6], new Vector3((rx + 1) * 2, 0, (ry + 4) * 2), Quaternion.identity);        
 
 
         //Generate key2 room
@@ -293,6 +294,7 @@ public class MazeObject : MonoBehaviour
         westTx[rx, ry + 5] = 8; westTx[rx + 6, ry + 5] = 8;
         floorTx[rx + 3, ry] = 11; floorTx[rx + 5, ry] = 11; //Pillars
         floorTx[rx + 5, ry + 5] = 11; floorTx[rx, ry + 3] = 11; floorTx[rx, ry + 5] = 11;
+        Instantiate(prefabs[7], new Vector3((rx + 4) * 2, 0, (ry + 4) * 2), Quaternion.identity);
 
         //Generate key3 room
         done = false;
@@ -329,6 +331,8 @@ public class MazeObject : MonoBehaviour
         westTx[rx, ry + 5] = 8; westTx[rx + 3, ry + 5] = 8;
         floorTx[rx, ry] = 11; floorTx[rx + 5, ry] = 11; //Pillars
         floorTx[rx + 5, ry + 2] = 11; floorTx[rx, ry + 5] = 11; floorTx[rx + 2, ry + 5] = 11;
+        Instantiate(prefabs[8], new Vector3((rx + 1) * 2, 0, (ry + 1) * 2), Quaternion.identity);
+
 
         //Generate key4 room
         done = false;
@@ -365,6 +369,30 @@ public class MazeObject : MonoBehaviour
         westTx[rx + 3, ry + 5] = 8; westTx[rx + 6, ry + 5] = 8;
         floorTx[rx, ry] = 11; floorTx[rx + 5, ry] = 11; //Pillars
         floorTx[rx, ry + 2] = 11; floorTx[rx + 3, ry + 5] = 11; floorTx[rx + 5, ry + 5] = 11;
+        Instantiate(prefabs[9], new Vector3((rx + 4) * 2, 0, (ry + 1) * 2), Quaternion.identity);
+
+        //Randomize tiles
+        int txtr = 0, xN, yN, xW, yW;
+        for(int t = 1; t < 9; t++)
+        {
+            if (t == 1) txtr = 1;
+            if (t == 2) txtr = 2;
+            if (t == 3) txtr = 5;
+            if (t == 4) txtr = 6;
+            if (t == 5) txtr = 7;
+            if (t == 6) txtr = 8;
+            if (t == 7) txtr = 9;
+            if (t == 8) txtr = 10;
+            for (int i = 0; i < Random.Range(5, 25); i++)
+            {
+                xN = Random.Range(0, cMazeSize - 1); yN = Random.Range(0, cMazeSize - 1);
+                xW = Random.Range(0, cMazeSize - 1); yW = Random.Range(0, cMazeSize - 1);
+                if (westTx[xW, yW] != 0 && westTx[xW, yW] != 3 && westTx[xW, yW] != 13) westTx[xW, yW] = txtr;
+                if (northTx[xN, yN] != 0 && northTx[xN, yN] != 3 && northTx[xN, yN] != 13) northTx[xN, yN] = txtr;
+                ceilingTx[Random.Range(0, cMazeSize - 1), Random.Range(0, cMazeSize - 1)] = txtr;
+                floorTx[Random.Range(0, cMazeSize - 1), Random.Range(0, cMazeSize - 1)] = txtr;
+            }
+        }
 
         //Destroy the maze
         GameObject[] MazeObjects = GameObject.FindGameObjectsWithTag("Maze");

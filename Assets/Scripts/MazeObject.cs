@@ -7,7 +7,7 @@ public class MazeObject : MonoBehaviour
     private Object[] mats, prefabs;    
     private int[,] floorTx, westTx, northTx, ceilingTx, maze;
     private GameObject[,] floorGo, westGo, northGo, ceilingGo;
-    private const int cMazeSize = 31;
+    public const int cMazeSize = 31;
 
     void Start()
     {    
@@ -191,8 +191,6 @@ public class MazeObject : MonoBehaviour
         floorTx[rx + 1, ry + 1] = 11; floorTx[rx + 3, ry + 1] = 11; //Pillars
         floorTx[rx + 1, ry + 3] = 11; floorTx[rx + 3, ry + 3] = 11;
         GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3((rx + 2) * 2, 0, (ry + 1) * 2); //place the player
-        GameObject.FindGameObjectWithTag("Player").transform.rotation = Quaternion.identity; //Rotate the player
-
 
         //Generate Entry Room
         bool done = false;

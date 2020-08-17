@@ -7,6 +7,14 @@ TagManager:
   - Main Light
   - Maze
   - GoldDoor
+  - Door
+  - INFIR_Rune
+  - SERPT_Rune
+  - ECLYP_Rune
+  - DRAKE_Rune
+  - Cross
+  - Ghost
+  - Head
   layers:
   - Default
   - TransparentFX

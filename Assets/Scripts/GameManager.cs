@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static MazeObject MAZE;
     public static GameManager GAME;
+    public bool infir, serpt, eclyp, drake, cross;
 
     void Awake()
     {

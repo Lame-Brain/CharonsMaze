@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class MazeObject : MonoBehaviour
 {
-    private Object[] mats, prefabs;    
-    private int[,] floorTx, westTx, northTx, ceilingTx, maze;
-    private GameObject[,] floorGo, westGo, northGo, ceilingGo;
+    public Object[] mats, prefabs;    
+    public int[,] floorTx, westTx, northTx, ceilingTx, maze;
+    public GameObject[,] floorGo, westGo, northGo, ceilingGo;
     public const int cMazeSize = 31;
+    public GameObject wall, door, goldDoor, floor, ceiling;
 
     void Start()
-    {    
+    {
     }
 
-    public void MakeMaze()
+    public void InitializeMaze()
     {
         mats = Resources.LoadAll("Materials", typeof(Material));
         prefabs = Resources.LoadAll("Prefabs");
-        GameObject wall = (GameObject)prefabs[3];
-        GameObject door = (GameObject)prefabs[1];
-        GameObject goldDoor = (GameObject)prefabs[5];
-        GameObject floor = (GameObject)prefabs[2];
-        GameObject ceiling = (GameObject)prefabs[0];
+        wall = (GameObject)prefabs[3];
+        door = (GameObject)prefabs[1];
+        goldDoor = (GameObject)prefabs[5];
+        floor = (GameObject)prefabs[2];
+        ceiling = (GameObject)prefabs[0];
         floorTx = new int[cMazeSize, cMazeSize];
         ceilingTx = new int[cMazeSize, cMazeSize];
         westTx = new int[cMazeSize + 1, cMazeSize + 1];
@@ -31,7 +32,10 @@ public class MazeObject : MonoBehaviour
         ceilingGo = new GameObject[cMazeSize, cMazeSize];
         westGo = new GameObject[cMazeSize + 1, cMazeSize + 1];
         northGo = new GameObject[cMazeSize + 1, cMazeSize + 1];
+    }
 
+    public void MakeMaze()
+    {
         //initialize Ceiling and Floor textures
         for (int y = 0; y < cMazeSize; y++)
         {
@@ -90,7 +94,7 @@ public class MazeObject : MonoBehaviour
                 rndmx = Random.Range(2, cMazeSize - 3); rndmy = Random.Range(2, cMazeSize - 3);
                 if (maze[rndmx, rndmy] == 0) loopDone = true;
             }
-            Debug.Log("-> X = " + rndmx + ", Y = " + rndmy);
+            //Debug.Log("-> X = " + rndmx + ", Y = " + rndmy);
             maze[rndmx, rndmy] = 1;
         }
 
@@ -394,7 +398,10 @@ public class MazeObject : MonoBehaviour
                 floorTx[Random.Range(0, cMazeSize - 1), Random.Range(0, cMazeSize - 1)] = txtr;
             }
         }
+    }
 
+    public void DrawMaze()
+    {
         //Destroy the maze
         GameObject[] MazeObjects = GameObject.FindGameObjectsWithTag("Maze");
         for (int i = 0; i < MazeObjects.Length; i++) Destroy(MazeObjects[i]);
@@ -402,10 +409,10 @@ public class MazeObject : MonoBehaviour
         //Draw the maze
         for (int y = 0; y < cMazeSize; y++)
         {
-            for(int x = 0; x < cMazeSize; x++)
+            for (int x = 0; x < cMazeSize; x++)
             {
                 if (floorTx[x, y] > 0)
-                {                    
+                {
                     floorGo[x, y] = Instantiate(floor, new Vector3(x * 2, floor.transform.position.y, y * 2), floor.transform.rotation);
                     floorGo[x, y].GetComponent<MeshRenderer>().material = (Material)mats[floorTx[x, y]];
                     if (floorTx[x, y] == 11) { Instantiate(prefabs[4], new Vector3(x * 2, 0, y * 2), Quaternion.identity); floorGo[x, y].GetComponent<MeshRenderer>().material = (Material)mats[6]; }
@@ -415,14 +422,15 @@ public class MazeObject : MonoBehaviour
                     ceilingGo[x, y] = Instantiate(ceiling, new Vector3(x * 2, ceiling.transform.position.y, y * 2), ceiling.transform.rotation);
                     ceilingGo[x, y].GetComponent<MeshRenderer>().material = (Material)mats[ceilingTx[x, y]];
                 }
-                if(northTx[x,y] > 0)
+                if (northTx[x, y] > 0)
                 {
-                    if(northTx[x,y] == 3 || northTx[x, y] == 13)
+                    if (northTx[x, y] == 3 || northTx[x, y] == 13)
                     {
-                        if(northTx[x, y] == 3) northGo[x, y] = Instantiate(door, new Vector3((x * 2), 0, (y * 2) - 1), Quaternion.Euler(0, 0, 0));
-                        if (northTx[x, y] == 13) northGo[x, y] = Instantiate(goldDoor, new Vector3((x * 2), 0, (y * 2) - 1), Quaternion.Euler(0, 0, 0));
+                        if (northTx[x, y] == 3) northGo[x, y] = Instantiate(door, new Vector3((x * 2), 0, (y * 2) - 1), Quaternion.Euler(0, 0, 0));
+                        if (northTx[x, y] == 13) northGo[x, y] = Instantiate(goldDoor, new Vector3((x * 2), -0.05f, (y * 2) - 1), Quaternion.Euler(0, 0, 0));
                     }
-                    else {
+                    else
+                    {
                         northGo[x, y] = Instantiate(wall, new Vector3((x * 2), 0, (y * 2) - 1), Quaternion.Euler(0, 0, 0));
                         northGo[x, y].GetComponent<MeshRenderer>().material = (Material)mats[northTx[x, y]];
                     }
@@ -432,7 +440,7 @@ public class MazeObject : MonoBehaviour
                     if (westTx[x, y] == 3 || westTx[x, y] == 13)
                     {
                         if (westTx[x, y] == 3) westGo[x, y] = Instantiate(door, new Vector3((x * 2) - 1, 0, (y * 2)), Quaternion.Euler(0, 90, 0));
-                        if (westTx[x, y] == 13) westGo[x, y] = Instantiate(goldDoor, new Vector3((x * 2) - 1, 0, (y * 2)), Quaternion.Euler(0, 90, 0));
+                        if (westTx[x, y] == 13) westGo[x, y] = Instantiate(goldDoor, new Vector3((x * 2) - 1, -0.05f, (y * 2)), Quaternion.Euler(0, 90, 0));
 
                     }
                     else
@@ -444,17 +452,17 @@ public class MazeObject : MonoBehaviour
             }
         }
         //draw the farsides
-        for(int i = 0; i <cMazeSize; i++)
+        for (int i = 0; i < cMazeSize; i++)
         {
             if (northTx[i, cMazeSize] > 0)
             {
                 northGo[i, cMazeSize] = Instantiate(wall, new Vector3((i * 2), 0, (cMazeSize * 2) - 1), Quaternion.Euler(0, 0, 0));
                 northGo[i, cMazeSize].GetComponent<MeshRenderer>().material = (Material)mats[northTx[i, cMazeSize]];
             }
-            if (westTx[cMazeSize,i] > 0)
+            if (westTx[cMazeSize, i] > 0)
             {
-                westGo[cMazeSize,i] = Instantiate(wall, new Vector3((cMazeSize * 2) - 1, 0, (i * 2)), Quaternion.Euler(0, 90, 0));
-                westGo[cMazeSize,i].GetComponent<MeshRenderer>().material = (Material)mats[westTx[cMazeSize,i]];
+                westGo[cMazeSize, i] = Instantiate(wall, new Vector3((cMazeSize * 2) - 1, 0, (i * 2)), Quaternion.Euler(0, 90, 0));
+                westGo[cMazeSize, i].GetComponent<MeshRenderer>().material = (Material)mats[westTx[cMazeSize, i]];
             }
         }
     }

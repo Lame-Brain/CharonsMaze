@@ -58,7 +58,7 @@ public class GhostController : MonoBehaviour
             ghost = State.waiting;
         }
 
-            if (ghost == State.searching) target = waypoint1;
+        if (ghost == State.searching) target = waypoint1;
     }
 
     public void FixedUpdate()
@@ -80,30 +80,15 @@ public class GhostController : MonoBehaviour
         {
             if (hit.transform.tag == "Player" && Mathf.Abs(angle) <= 45) //YUP!
             {
-                if (ghost != State.preparing && ghost != State.attacking)
-                {
-                    saved = ghost;
-                    ghost = State.preparing;
-                    aggressonCounter = 0;
-                    Debug.Log("COCAINE");
-                } //Fist see me? go to preparing state
-                if(ghost == State.preparing) 
-                {
-                    aggressonCounter++;
-                    Debug.Log(aggressonCounter + " of " + aggression);
-                    if (aggressonCounter > aggression)
-                    {
-                        ghost = State.attacking;
-                        Debug.Log("I WILL END YOU");
-                    }                    
-                } //in preparing and can still see me? count up to aggression (then attack)
-                if(ghost == State.attacking)
+                if (ghost != State.preparing && ghost != State.attacking) { saved = ghost; ghost = State.preparing; aggressonCounter = 0; } //First see me? go to preparing state
+                if (ghost == State.preparing) { aggressonCounter++; waypoint1 = new Vector3(playerX, 0, playerZ); Debug.Log(aggressonCounter + " of " + aggression); if (aggressonCounter > aggression) { ghost = State.attacking; Debug.Log("I WILL END YOU"); } } //in preparing and can still see me? count up to aggression (then attack)
+                if (ghost == State.attacking)
                 {
                     //.PLAY SOUND
                     target = new Vector3(playerX, 0, playerZ);
                 }
             }
-            if (hit.transform.tag == "Player" || Mathf.Abs(angle) > 45) //NOPE! Can't see ya!
+            if (hit.transform.tag != "Player" || Mathf.Abs(angle) > 45) //NOPE! Can't see ya!
             {
                 if(ghost == State.preparing) { ghost = saved; Debug.Log("DAMN! LOST YOU!"); }
                 if(ghost == State.attacking && Vector3.Distance(transform.position, target) > (seekRange * 0.5f)) //Lose the ghost

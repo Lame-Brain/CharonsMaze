@@ -17,18 +17,20 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         MAZE = this.GetComponent<MazeObject>();
+        MAZE.InitializeMaze();
         MAZE.MakeMaze();
+        MAZE.DrawMaze();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.R))
+        if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Space))
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 1.75f))
             {
-                Debug.Log("I am near a " + hit.collider.tag);
+                //Debug.Log("I am near a " + hit.collider.tag);
                 if(hit.collider.tag == "Door")
                 {
                     hit.collider.gameObject.SetActive(false);

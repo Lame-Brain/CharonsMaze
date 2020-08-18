@@ -9,6 +9,7 @@ public class MazeObject : MonoBehaviour
     public GameObject[,] floorGo, westGo, northGo, ceilingGo;
     public const int cMazeSize = 31;
     public GameObject wall, door, goldDoor, floor, ceiling;
+    private int playerStartX, playerStartY;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class MazeObject : MonoBehaviour
 
     public void InitializeMaze()
     {
+        Debug.Log("Init Maze");
         mats = Resources.LoadAll("Materials", typeof(Material));
         prefabs = Resources.LoadAll("Prefabs");
         wall = (GameObject)prefabs[3];
@@ -31,11 +33,12 @@ public class MazeObject : MonoBehaviour
         floorGo = new GameObject[cMazeSize, cMazeSize];
         ceilingGo = new GameObject[cMazeSize, cMazeSize];
         westGo = new GameObject[cMazeSize + 1, cMazeSize + 1];
-        northGo = new GameObject[cMazeSize + 1, cMazeSize + 1];
+        northGo = new GameObject[cMazeSize + 1, cMazeSize + 1];        
     }
 
     public void MakeMaze()
     {
+        Debug.Log("Make Maze");
         //initialize Ceiling and Floor textures
         for (int y = 0; y < cMazeSize; y++)
         {
@@ -194,7 +197,8 @@ public class MazeObject : MonoBehaviour
         westTx[rx, 4] = 8; westTx[rx + 5, 4] = 8;
         floorTx[rx + 1, ry + 1] = 11; floorTx[rx + 3, ry + 1] = 11; //Pillars
         floorTx[rx + 1, ry + 3] = 11; floorTx[rx + 3, ry + 3] = 11;
-        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3((rx + 2) * 2, 0, (ry + 1) * 2); //place the player
+        playerStartX = (rx + 2) * 2; //Player start coordinates
+        playerStartY = (ry) * 2;
 
         //Generate Entry Room
         bool done = false;
@@ -402,10 +406,12 @@ public class MazeObject : MonoBehaviour
 
     public void DrawMaze()
     {
+        Debug.Log("Destroy Maze");
         //Destroy the maze
         GameObject[] MazeObjects = GameObject.FindGameObjectsWithTag("Maze");
-        for (int i = 0; i < MazeObjects.Length; i++) Destroy(MazeObjects[i]);
+        for (int i = 0; i < MazeObjects.Length; i++) Destroy(MazeObjects[i]);        
 
+        Debug.Log("Draw Maze");
         //Draw the maze
         for (int y = 0; y < cMazeSize; y++)
         {
@@ -465,6 +471,12 @@ public class MazeObject : MonoBehaviour
                 westGo[cMazeSize, i].GetComponent<MeshRenderer>().material = (Material)mats[westTx[cMazeSize, i]];
             }
         }
+
+        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(playerStartX, -0.65f, playerStartY); //place the player
+
+        GameObject[] mos = GameObject.FindGameObjectsWithTag("Maze");
+        Debug.Log("MAze Objects! " + mos.Length);
+
     }
 }
 

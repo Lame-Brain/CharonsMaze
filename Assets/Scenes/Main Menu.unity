@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -203,6 +203,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &523145666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 523145669}
+  - component: {fileID: 523145668}
+  - component: {fileID: 523145667}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &523145667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523145666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13850404143a0e4fb97aead1731381a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mats: []
+  prefabs: []
+  wall: {fileID: 4834201517251813867, guid: 78dfb502966967141ba744cc92420c9e, type: 3}
+  door: {fileID: 5977475007431804890, guid: 18464b2e8a56572408352f154911e087, type: 3}
+  goldDoor: {fileID: 919535792687061004, guid: c7a0b3276ea72554e8091002af6fe350, type: 3}
+  floor: {fileID: 4226812056394171034, guid: 0767ad20512587243a6fa69e150ce3de, type: 3}
+  ceiling: {fileID: 5694059698955427807, guid: 8af079f81e53e8d4a9ebea964735b922, type: 3}
+--- !u!114 &523145668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523145666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772024ff01ce3114d99a11cd2c09a27d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infir: 0
+  serpt: 0
+  eclyp: 0
+  drake: 0
+  cross: 0
+--- !u!4 &523145669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523145666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &991723750
 GameObject:

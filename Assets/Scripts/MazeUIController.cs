@@ -20,7 +20,7 @@ public class MazeUIController : MonoBehaviour
         story[1] = "You find another Rune, and as you pick it up, you hear the voice again. ‘Once, long ago, I too lived, and died, and stood before Charon. I offered him the toll, but instead of taking it, he told me of this Labyrinth. Have you guessed the truth of the Labyrinth yet? Have you guessed why a Ferryman of Hades needs a Labyrinth to trap souls?’\n\n’Who is this!? Are you the Ghost? The Ancestor Spirit?” but again the voice is gone.’";
         story[2] = "This time, as you take the Rune, you are prepared for the voice. ‘Am I the Dark Spirit? Yes and no. I am what the Ghost once was, and the Ghost is what I once was. But I grow weak, and the Ghost grows strong. I have forgotten much, but I remember this: Stop the Dark Spirit from escaping at any cost!’\n\n’Tell me more about the Labyrinth! Tell me how to escape!’ You shout, well aware that you will receive no answer until you find another Rune.";
         story[3] = "‘Tell me about the Labyrinth, and tell me what I must do.’ You declare, just before taking the last Rune.\n\n’Do not trust Charon. This is his Labyrinth, and he is responsible for the tortures that shaped the Dark Spirit my other half has become! The Runes are me, and tied to our bloodline. Bring them to Charon and find out what he wants, but remember; he cannot act upon the Runes himself, he needs to use you as his agent. Defy him! Overcome him! Do not trust him as I once did!’\n\nThe voice fades as before. You have all four Runes now. Time to seek out Charon again.";
-        story[4] = "As you collect the crucifix before you, a sense of peace fills you. Whatever you believe, this is no mere religious symbol, it is a shard of true faith from the Ancestor Spirit before it became the Ghost it is now. Charon did not mention this, is it helpful? You decide to take it with you just in case.";
+        story[4] = "As you collect the crucifix before you, a sense of peace fills you.\n\nWhatever your beleifs, you realize that this is no mere religious symbol. It is imbued with faith and hope of those who came here before. Charon sent you for the runes, but did not mention this.\n\nAfter a short debate you decide to take it with you, just in case.";
         story[5] = "You found the crucifix again! You thought it was lost! Joyously, you pick it up, hoping you will not need to use it again…";
     }
 
@@ -37,6 +37,15 @@ public class MazeUIController : MonoBehaviour
         if (!GameManager.GAME.drake) drakeIMG.enabled = false;
         if (GameManager.GAME.cross) crossIMG.enabled = true;
         if (!GameManager.GAME.cross) crossIMG.enabled = false;
+
+        if(Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Space))
+        {
+            if (infirRunePanel.activeSelf) { infirRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(); }
+            if (serptRunePanel.activeSelf) { serptRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(); }
+            if (eclypRunePanel.activeSelf) { eclypRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(); }
+            if (drakeRunePanel.activeSelf) { drakeRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(); }
+            if (crossPanel.activeSelf) { crossPanel.SetActive(false); GameManager.GAME.UnpauseGame(); }
+        }
     }
 
     public string getStory(int n)
@@ -45,8 +54,8 @@ public class MazeUIController : MonoBehaviour
         if (n < 4) storyIndex++;
         if (n >= 4)
         {
-            if(!hadCrossBefore) r = story[5];
-            if (hadCrossBefore) r = story[6];
+            if(!hadCrossBefore) r = story[4];
+            if (hadCrossBefore) r = story[5];
             hadCrossBefore = true;
         }
         return r;

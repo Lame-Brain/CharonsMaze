@@ -469,26 +469,25 @@ public class MazeObject : MonoBehaviour
                 westGo[cMazeSize, i].GetComponent<MeshRenderer>().material = (Material)mats[westTx[cMazeSize, i]];
             }
         }
-        //TEST
-        infirX = playerStartX; infirY = playerStartY + 2;
-        serptX = playerStartX + 2; serptY = playerStartY;
-        eclypX = playerStartX - 2; eclypY = playerStartY;
-        drakeX = playerStartX; drakeY = playerStartY + 4;
-        //END TEST
 
-
+        GameObject.FindGameObjectWithTag("Ghost").transform.position = new Vector3((Random.Range(playerStartX - 3f, playerStartX + 3f)) * 10, 0, (Random.Range(playerStartY - 3f, playerStartY + 3f)) * 10);   //place the ghost
         GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(playerStartX, -0.65f, playerStartY); //place the player        
         if (!GameManager.GAME.infir) Instantiate(prefabs[6], new Vector3(infirX, 0, infirY), Quaternion.identity); //INFIR
         if (!GameManager.GAME.serpt) Instantiate(prefabs[7], new Vector3(serptX, 0, serptY), Quaternion.identity); //SERPT
         if (!GameManager.GAME.eclyp) Instantiate(prefabs[8], new Vector3(eclypX, 0, eclypY), Quaternion.identity); //ECLYP
         if (!GameManager.GAME.drake) Instantiate(prefabs[9], new Vector3(drakeX, 0, drakeY), Quaternion.identity); //DRAKE
-        if (!GameManager.GAME.cross) Instantiate(prefabs[10], new Vector3(crossX, 0, crossY), Quaternion.identity); //CROSS
+        SpawnCross(); //CROSS
 
 
 
         GameObject[] mos = GameObject.FindGameObjectsWithTag("Maze");
         Debug.Log("MAze Objects! " + mos.Length);
 
+    }
+
+    public void SpawnCross()
+    {
+        if (!GameManager.GAME.cross) Instantiate(prefabs[10], new Vector3(crossX, 0, crossY), Quaternion.identity);
     }
 }
 

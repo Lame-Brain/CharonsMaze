@@ -61,7 +61,7 @@ public class PickupController : MonoBehaviour
         {
             GameManager.GAME.cross = true;
             go.GetComponent<MazeUIController>().crossPanel.SetActive(true);
-            go.GetComponent<MazeUIController>().drakeStory.text = go.GetComponent<MazeUIController>().getStory(5);
+            go.GetComponent<MazeUIController>().crossStory.text = go.GetComponent<MazeUIController>().getStory(5);
         }
         Destroy(this.gameObject);
         //Play pickup sound

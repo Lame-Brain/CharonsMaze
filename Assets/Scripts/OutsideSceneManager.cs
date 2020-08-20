@@ -8,7 +8,7 @@ public class OutsideSceneManager : MonoBehaviour
     public GameObject[] tree;
     public GameObject Charon;
     private float xCharon, yCharon, zCharon, bobCharon = 0.0005f;
-    public GameObject Ferry, conversationPanel, whyMePanel, howManyPanel, whoIsGhostPanel, how2LeavePanel, mazeRegenPanel, payTollPanel, broughtRunesPanel;
+    public GameObject Ferry, conversationPanel, whyMePanel, howManyPanel, whoIsGhostPanel, how2LeavePanel, mazeRegenPanel, payTollPanel, broughtRunesPanel, gameMenu;
     public GameObject mazeRegenBtn, broughtRunesBtn, payTollBtn;
     private float xFerry, yFerry, zFerry, bobFerry = 0.001f;
     public bool readyToPayToll = false;
@@ -35,7 +35,7 @@ public class OutsideSceneManager : MonoBehaviour
     {
         xCharon = Charon.transform.position.x; yCharon = Charon.transform.position.y; zCharon = Charon.transform.position.z;
         yCharon += bobCharon;
-        if (yCharon + bobCharon > 2) bobCharon = -0.0005f;
+        if (yCharon + bobCharon > 1.5) bobCharon = -0.0005f;
         if (yCharon + bobCharon < 1.3) bobCharon = 0.0005f;
         Charon.transform.position = new Vector3(xCharon, yCharon + bobCharon, zCharon);
 
@@ -51,6 +51,26 @@ public class OutsideSceneManager : MonoBehaviour
         if (GameManager.GAME.infir && GameManager.GAME.serpt && GameManager.GAME.eclyp && GameManager.GAME.drake) broughtRunesBtn.SetActive(true);
         if (!GameManager.GAME.infir || !GameManager.GAME.serpt || !GameManager.GAME.eclyp || !GameManager.GAME.drake) broughtRunesBtn.SetActive(false);
         payTollBtn.SetActive(readyToPayToll);
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {            
+            if (conversationPanel.activeSelf)
+            {                
+                if ((!whyMePanel.activeSelf) && (!howManyPanel.activeSelf) && (!whoIsGhostPanel.activeSelf) && (!how2LeavePanel.activeSelf) && (!mazeRegenPanel.activeSelf) && (!payTollPanel.activeSelf) && (!broughtRunesPanel.activeSelf)) { conversationPanel.SetActive(false); UnpauseGame(); }
+                whyMePanel.SetActive(false);
+                howManyPanel.SetActive(false);
+                whoIsGhostPanel.SetActive(false);
+                how2LeavePanel.SetActive(false);
+                mazeRegenPanel.SetActive(false);
+                payTollPanel.SetActive(false);
+                broughtRunesPanel.SetActive(false);
+            }
+            else
+            {
+                if (gameMenu.activeSelf) GameManager.GAME.PauseGame();
+                if (!gameMenu.activeSelf) GameManager.GAME.UnpauseGame();
+                gameMenu.SetActive(!gameMenu.activeSelf);
+            }
+        }
     }
 
     public void UnpauseGame()

@@ -21,6 +21,7 @@ public class GhostController : MonoBehaviour
     private GameObject player;
     public bool canSeePlayer, playerIsInFront;
     public float fov;
+    public GameObject hitWithCross, hitWithoutCross;
 
     void Start()
     {
@@ -61,6 +62,12 @@ public class GhostController : MonoBehaviour
         }
 
         if (ghost == State.searching) target = waypoint1;
+
+        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Space))
+        {
+            if (hitWithCross.activeSelf) hitWithCross.SetActive(false);
+            GameManager.GAME.UnpauseGame();
+        }
     }
 
     public void FixedUpdate()
@@ -102,6 +109,28 @@ public class GhostController : MonoBehaviour
                     //.PLAY SOUND
                     ghost = State.hunting;
                 }
+            }
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player") //hit the player
+        {
+            other.transform.LookAt(new Vector3(transform.position.x, 0, transform.position.y));
+            if (GameManager.GAME.cross)// player has cross
+            {
+                hitWithCross.SetActive(true);
+                GameManager.GAME.PauseGame();
+                GameObject.FindGameObjectWithTag("Ghost").transform.position = new Vector3((Random.Range(other.transform.position.x - 3f, other.transform.position.x + 3f)) * 10, 0, (Random.Range(other.transform.position.y - 3f, other.transform.position.y + 3f)) * 10);   //displace the ghost
+                GameManager.GAME.cross = false;
+                GameManager.MAZE.SpawnCross();
+                //play sound
+            }
+            else //Player does not have cross
+            {
+                hitWithoutCross.SetActive(true);
+                //play sound
             }
         }
     }

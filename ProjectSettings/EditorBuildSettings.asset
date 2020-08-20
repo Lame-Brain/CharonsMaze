@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Outside.unity
     guid: 5ba206c5435528244856291fd882712a
+  - enabled: 1
+    path: Assets/Scenes/End-Dead.unity
+    guid: 19ba6071534b0684eb88444a9f98fd68
+  - enabled: 1
+    path: Assets/Scenes/End-Lost.unity
+    guid: f19b266e583db0d4085d2f3139122b83
+  - enabled: 1
+    path: Assets/Scenes/End-Won.unity
+    guid: fe6e4a9bf12c34e49bceb55a16927a70
   m_configObjects: {}

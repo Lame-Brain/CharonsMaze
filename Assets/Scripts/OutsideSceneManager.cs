@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OutsideSceneManager : MonoBehaviour
 {
     public GameObject[] tree;
     public GameObject Charon;
     private float xCharon, yCharon, zCharon, bobCharon = 0.0005f;
-    public GameObject Ferry;
+    public GameObject Ferry, conversationPanel, whyMePanel, howManyPanel, whoIsGhostPanel, how2LeavePanel, mazeRegenPanel, payTollPanel, broughtRunesPanel;
+    public GameObject mazeRegenBtn, broughtRunesBtn, payTollBtn;
     private float xFerry, yFerry, zFerry, bobFerry = 0.001f;
+    public bool readyToPayToll = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,5 +44,24 @@ public class OutsideSceneManager : MonoBehaviour
         if (yFerry + bobFerry > 0) bobFerry = -0.001f;
         if (yFerry + bobFerry < -0.34) bobFerry = 0.001f;
         Ferry.transform.position = new Vector3(xFerry+bobFerry, yFerry + bobFerry, zFerry);
+
+        //UI STUFF (Charon Conversation)
+        if (GameManager.GAME.MazeFirstTime) mazeRegenBtn.SetActive(false);
+        if (!GameManager.GAME.MazeFirstTime) mazeRegenBtn.SetActive(true);
+        if (GameManager.GAME.infir && GameManager.GAME.serpt && GameManager.GAME.eclyp && GameManager.GAME.drake) broughtRunesBtn.SetActive(true);
+        if (!GameManager.GAME.infir || !GameManager.GAME.serpt || !GameManager.GAME.eclyp || !GameManager.GAME.drake) broughtRunesBtn.SetActive(false);
+        payTollBtn.SetActive(readyToPayToll);
     }
+
+    public void UnpauseGame()
+    {
+        GameManager.GAME.UnpauseGame();
+    }
+
+    public void MazeRegen()
+    {
+        GameManager.MAZE.MakeMaze();
+    }
+
+    public void ReadyToPayToll() { readyToPayToll = true; }
 }

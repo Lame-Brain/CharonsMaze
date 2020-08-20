@@ -9,7 +9,7 @@ public class MazeObject : MonoBehaviour
     public GameObject[,] floorGo, westGo, northGo, ceilingGo;
     public const int cMazeSize = 31;
     public GameObject wall, door, goldDoor, floor, ceiling;
-    private int playerStartX, playerStartY;
+    private int playerStartX, playerStartY, infirX, infirY, serptX, serptY, eclypX, eclypY, drakeX, drakeY, crossX, crossY;
 
     void Start()
     {
@@ -221,8 +221,8 @@ public class MazeObject : MonoBehaviour
         westTx[rx, ry+1] = 3; westTx[rx + 3, ry+1] = 3; 
         westTx[rx, ry+2] = 8; westTx[rx + 3, ry+2] = 8;
         floorTx[rx, ry] = 11; floorTx[rx + 2, ry] = 11; //Pillars
-        floorTx[rx, ry+2] = 11; floorTx[rx + 2, ry+2] = 11;        
-        Instantiate(prefabs[10], new Vector3((rx + 1) * 2, 0, (ry + 1) * 2), Quaternion.identity);
+        floorTx[rx, ry+2] = 11; floorTx[rx + 2, ry+2] = 11;
+        crossX = (rx + 1) * 2; crossY = (ry + 1) * 2;        
 
         //Generate key1 room
         done = false;
@@ -262,8 +262,7 @@ public class MazeObject : MonoBehaviour
         westTx[rx, ry + 5] = 8; westTx[rx + 6, ry + 5] = 8; 
         floorTx[rx, ry] = 11; floorTx[rx + 2, ry] = 11; //Pillars
         floorTx[rx, ry+5] = 11; floorTx[rx + 5, ry + 3] = 11; floorTx[rx + 5, ry + 5] = 11;
-        Instantiate(prefabs[6], new Vector3((rx + 1) * 2, 0, (ry + 4) * 2), Quaternion.identity);        
-
+        infirX = (rx + 1) * 2; infirY = (ry + 4) * 2;
 
         //Generate key2 room
         done = false;
@@ -303,7 +302,7 @@ public class MazeObject : MonoBehaviour
         westTx[rx, ry + 5] = 8; westTx[rx + 6, ry + 5] = 8;
         floorTx[rx + 3, ry] = 11; floorTx[rx + 5, ry] = 11; //Pillars
         floorTx[rx + 5, ry + 5] = 11; floorTx[rx, ry + 3] = 11; floorTx[rx, ry + 5] = 11;
-        Instantiate(prefabs[7], new Vector3((rx + 4) * 2, 0, (ry + 4) * 2), Quaternion.identity);
+        serptX = (rx + 4) * 2; serptY = (ry + 4) * 2;
 
         //Generate key3 room
         done = false;
@@ -340,8 +339,7 @@ public class MazeObject : MonoBehaviour
         westTx[rx, ry + 5] = 8; westTx[rx + 3, ry + 5] = 8;
         floorTx[rx, ry] = 11; floorTx[rx + 5, ry] = 11; //Pillars
         floorTx[rx + 5, ry + 2] = 11; floorTx[rx, ry + 5] = 11; floorTx[rx + 2, ry + 5] = 11;
-        Instantiate(prefabs[8], new Vector3((rx + 1) * 2, 0, (ry + 1) * 2), Quaternion.identity);
-
+        eclypX = (rx + 1) * 2; eclypY = (ry + 1) * 2;
 
         //Generate key4 room
         done = false;
@@ -378,7 +376,7 @@ public class MazeObject : MonoBehaviour
         westTx[rx + 3, ry + 5] = 8; westTx[rx + 6, ry + 5] = 8;
         floorTx[rx, ry] = 11; floorTx[rx + 5, ry] = 11; //Pillars
         floorTx[rx, ry + 2] = 11; floorTx[rx + 3, ry + 5] = 11; floorTx[rx + 5, ry + 5] = 11;
-        Instantiate(prefabs[9], new Vector3((rx + 4) * 2, 0, (ry + 1) * 2), Quaternion.identity);
+        drakeX = (rx + 4) * 2; drakeY = (ry + 1) * 2;
 
         //Randomize tiles
         int txtr = 0, xN, yN, xW, yW;
@@ -471,8 +469,22 @@ public class MazeObject : MonoBehaviour
                 westGo[cMazeSize, i].GetComponent<MeshRenderer>().material = (Material)mats[westTx[cMazeSize, i]];
             }
         }
+        //TEST
+        infirX = playerStartX; infirY = playerStartY + 2;
+        serptX = playerStartX + 2; serptY = playerStartY;
+        eclypX = playerStartX - 2; eclypY = playerStartY;
+        drakeX = playerStartX; drakeY = playerStartY + 4;
+        //END TEST
 
-        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(playerStartX, -0.65f, playerStartY); //place the player
+
+        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(playerStartX, -0.65f, playerStartY); //place the player        
+        if (!GameManager.GAME.infir) Instantiate(prefabs[6], new Vector3(infirX, 0, infirY), Quaternion.identity); //INFIR
+        if (!GameManager.GAME.serpt) Instantiate(prefabs[7], new Vector3(serptX, 0, serptY), Quaternion.identity); //SERPT
+        if (!GameManager.GAME.eclyp) Instantiate(prefabs[8], new Vector3(eclypX, 0, eclypY), Quaternion.identity); //ECLYP
+        if (!GameManager.GAME.drake) Instantiate(prefabs[9], new Vector3(drakeX, 0, drakeY), Quaternion.identity); //DRAKE
+        if (!GameManager.GAME.cross) Instantiate(prefabs[10], new Vector3(crossX, 0, crossY), Quaternion.identity); //CROSS
+
+
 
         GameObject[] mos = GameObject.FindGameObjectsWithTag("Maze");
         Debug.Log("MAze Objects! " + mos.Length);

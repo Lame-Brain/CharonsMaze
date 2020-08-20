@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManager : MonoBehaviour
 {
     public static MazeObject MAZE;
     public static GameManager GAME;
-    public bool infir, serpt, eclyp, drake, cross;
-    private bool MazeFirstTime = true, EnteredGardenFromMaze = false, MazeIsDrawn = false;
+    public bool infir, serpt, eclyp, drake, cross, paused;
+    public bool MazeFirstTime = true, EnteredGardenFromMaze = false, MazeIsDrawn = false;    
 
     void Awake()
     {
@@ -22,12 +23,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {        
-        
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {        
+        //if (paused) GameObject.Find("Player").GetComponent<FirstPersonController>().enabled = false;
+        //if (!paused) GameObject.Find("Player").GetComponent<FirstPersonController>().enabled = true;
+
         if (SceneManager.GetActiveScene().name == "Main Game" && MazeFirstTime)
         {
             MAZE.InitializeMaze();
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 1.75f))
             {
                 Debug.Log("I clicked on " + hit.collider.tag);
+
                 if (hit.collider.tag == "Door")
                 {
                     hit.collider.gameObject.SetActive(false);
@@ -75,7 +79,28 @@ public class GameManager : MonoBehaviour
                         done = true;
                     }
                 }
+
+                if(hit.collider.tag == "Charon")
+                {                    
+                    PauseGame();
+                    GameObject.FindGameObjectWithTag("SceneManager").GetComponent<OutsideSceneManager>().conversationPanel.SetActive(true);
+                }
             }
         }
+    }
+
+    public void PauseGame()
+    {
+        GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>().enabled = false;
+        paused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void UnpauseGame()
+    {
+        GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>().enabled = true;
+        paused = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

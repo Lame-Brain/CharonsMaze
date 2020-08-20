@@ -18,6 +18,7 @@ TagManager:
   - MazeScene
   - OutsideScene
   - Charon
+  - SceneManager
   layers:
   - Default
   - TransparentFX

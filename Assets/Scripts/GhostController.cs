@@ -72,7 +72,7 @@ public class GhostController : MonoBehaviour
             float adjustedSpeed = speed;
             if (ghost == State.searching) adjustedSpeed = speed * 0.5f; //speed is different when searching and attacking
             if (ghost == State.attacking || ghost == State.hunting) adjustedSpeed = speed * 3;            
-            transform.position = Vector3.MoveTowards(transform.position, target, adjustedSpeed * Time.deltaTime); //move the sucker
+            if(!GameManager.GAME.paused) transform.position = Vector3.MoveTowards(transform.position, target, adjustedSpeed * Time.deltaTime); //move the sucker
         }
         
         RaycastHit hit; //Test to see if the ghosty can see our crafty player
@@ -85,7 +85,7 @@ public class GhostController : MonoBehaviour
             if (hit.transform.tag == "Player" && Mathf.Abs(angle) <= fov) //YUP!
             {
                 if (ghost != State.preparing && ghost != State.attacking) { saved = ghost; ghost = State.preparing; aggressonCounter = 0; } //First see me? go to preparing state
-                if (ghost == State.preparing) { aggressonCounter++; waypoint1 = new Vector3(playerX, 0, playerZ); Debug.Log(aggressonCounter + " of " + aggression); if (aggressonCounter > aggression) { ghost = State.attacking; Debug.Log("I WILL END YOU"); } } //in preparing and can still see me? count up to aggression (then attack)
+                if (!GameManager.GAME.paused && ghost == State.preparing) { aggressonCounter++; waypoint1 = new Vector3(playerX, 0, playerZ); Debug.Log(aggressonCounter + " of " + aggression); if (aggressonCounter > aggression) { ghost = State.attacking; Debug.Log("I WILL END YOU"); } } //in preparing and can still see me? count up to aggression (then attack)
                 if (ghost == State.attacking)
                 {
                     //.PLAY SOUND

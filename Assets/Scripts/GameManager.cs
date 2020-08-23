@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Debug.Log("INITILIZING GAMEMANAGER (should only be once");
         MAZE = this.GetComponent<MazeObject>();
-        SceneManager.LoadScene("Outside");
+        
     }
 
     // Start is called before the first frame update
@@ -105,5 +105,16 @@ public class GameManager : MonoBehaviour
         paused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Outside");
+        //PauseGame(GameObject.FindGameObjectWithTag("Player"));
+    }
+
+    public void EndGame()
+    {
+        Application.Quit();
     }
 }

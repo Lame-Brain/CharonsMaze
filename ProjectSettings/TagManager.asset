@@ -19,6 +19,8 @@ TagManager:
   - OutsideScene
   - Charon
   - SceneManager
+  - Conversation
+  - ExitBeacon
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,7 @@ public class MazeObject : MonoBehaviour
     public int[,] floorTx, westTx, northTx, ceilingTx, maze;
     public GameObject[,] floorGo, westGo, northGo, ceilingGo;
     public const int cMazeSize = 31;
-    public GameObject wall, door, goldDoor, floor, ceiling;
+    public GameObject wall, door, goldDoor, floor, ceiling, MazeExitDoor;
     private int playerStartX, playerStartY, infirX, infirY, serptX, serptY, eclypX, eclypY, drakeX, drakeY, crossX, crossY;
 
     void Start()
@@ -431,7 +431,7 @@ public class MazeObject : MonoBehaviour
                     if (northTx[x, y] == 3 || northTx[x, y] == 13)
                     {
                         if (northTx[x, y] == 3) northGo[x, y] = Instantiate(door, new Vector3((x * 2), 0, (y * 2) - 1), Quaternion.Euler(0, 0, 0));
-                        if (northTx[x, y] == 13) northGo[x, y] = Instantiate(goldDoor, new Vector3((x * 2), -0.05f, (y * 2) - 1), Quaternion.Euler(0, 0, 0));
+                        if (northTx[x, y] == 13) { northGo[x, y] = Instantiate(goldDoor, new Vector3((x * 2), -0.05f, (y * 2) - 1), Quaternion.Euler(0, 0, 0));}
                     }
                     else
                     {
@@ -444,7 +444,7 @@ public class MazeObject : MonoBehaviour
                     if (westTx[x, y] == 3 || westTx[x, y] == 13)
                     {
                         if (westTx[x, y] == 3) westGo[x, y] = Instantiate(door, new Vector3((x * 2) - 1, 0, (y * 2)), Quaternion.Euler(0, 90, 0));
-                        if (westTx[x, y] == 13) westGo[x, y] = Instantiate(goldDoor, new Vector3((x * 2) - 1, -0.05f, (y * 2)), Quaternion.Euler(0, 90, 0));
+                        if (westTx[x, y] == 13) { westGo[x, y] = Instantiate(goldDoor, new Vector3((x * 2) - 1, -0.05f, (y * 2)), Quaternion.Euler(0, 90, 0)); } 
 
                     }
                     else
@@ -455,6 +455,7 @@ public class MazeObject : MonoBehaviour
                 }
             }
         }
+
         //draw the farsides
         for (int i = 0; i < cMazeSize; i++)
         {

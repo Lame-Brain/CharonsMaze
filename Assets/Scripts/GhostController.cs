@@ -38,7 +38,6 @@ public class GhostController : MonoBehaviour
         if (ghost == State.waiting)
         { 
             ghost = State.moving;
-            Debug.Log("IM GONNA GET CHA!");
         }
 
         if(ghost == State.moving || ghost == State.preparing) target = new Vector3(playerX, 0, playerZ); //if moving, set target to player
@@ -47,12 +46,10 @@ public class GhostController : MonoBehaviour
         {
             ghost = State.searching;
             waypoint1 = new Vector3(playerX, 0, playerZ);
-            Debug.Log("You are nearby");
         }
 
         if((ghost == State.searching || ghost == State.hunting) && transform.position == target)
         {
-            Debug.Log("Moving on...");
             ghost = State.wandering;
             target = new Vector3(Random.Range(transform.position.x - 30, transform.position.x + 30), 0, Random.Range(transform.position.z - 30, transform.position.z + 30));
         }
@@ -96,7 +93,7 @@ public class GhostController : MonoBehaviour
             if (hit.transform.tag == "Player" && Mathf.Abs(angle) <= fov) //YUP!
             {
                 if (ghost != State.preparing && ghost != State.attacking) { saved = ghost; ghost = State.preparing; aggressonCounter = 0; } //First see me? go to preparing state
-                if (!GameManager.GAME.paused && ghost == State.preparing) { aggressonCounter++; waypoint1 = new Vector3(playerX, 0, playerZ); Debug.Log(aggressonCounter + " of " + aggression); if (aggressonCounter > aggression) { ghost = State.attacking; Debug.Log("I WILL END YOU"); ghostAttack.Play(); } } //in preparing and can still see me? count up to aggression (then attack)
+                if (!GameManager.GAME.paused && ghost == State.preparing) { aggressonCounter++; waypoint1 = new Vector3(playerX, 0, playerZ); if (aggressonCounter > aggression) { ghost = State.attacking; ghostAttack.Play(); } } //in preparing and can still see me? count up to aggression (then attack)
                 if (ghost == State.attacking)
                 {
                     //.PLAY SOUND                    ghostAttack.Play();
@@ -107,7 +104,7 @@ public class GhostController : MonoBehaviour
             if (Mathf.Abs(angle) > 45) playerIsInFront = false;
             if (hit.transform.tag != "Player" || Mathf.Abs(angle) > fov) //NOPE! Can't see ya!
             {
-                if(ghost == State.preparing) { ghost = saved; Debug.Log("DAMN! LOST YOU!"); }
+                if(ghost == State.preparing) { ghost = saved;}
                 if(ghost == State.attacking) //Lose the ghost
                 {
                     //.PLAY SOUND

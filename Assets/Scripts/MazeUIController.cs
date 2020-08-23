@@ -7,8 +7,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class MazeUIController : MonoBehaviour
 {
     public Image infirIMG, serptIMG, eclypIMG, drakeIMG, crossIMG;
-    public GameObject infirRunePanel, serptRunePanel, eclypRunePanel, drakeRunePanel, crossPanel, gameMenu, optionsMenu, confirmMenu, player;
+    public GameObject infirRunePanel, serptRunePanel, eclypRunePanel, drakeRunePanel, crossPanel, gameMenu, optionsMenu, confirmMenu, player, ExitDoorBeacon;
     public Text infirStory, serptStory, eclypStory, drakeStory, crossStory;
+    public AudioSource ExitDoorSound;
     private int storyIndex;
     private bool hadCrossBefore = false;
     private string[] story;
@@ -38,6 +39,18 @@ public class MazeUIController : MonoBehaviour
         if (!GameManager.GAME.drake) drakeIMG.enabled = false;
         if (GameManager.GAME.cross) crossIMG.enabled = true;
         if (!GameManager.GAME.cross) crossIMG.enabled = false;
+        if (infirIMG.enabled && serptIMG.enabled && eclypIMG.enabled && drakeIMG.enabled && !ExitDoorSound.isPlaying)
+        {
+            GameObject[] GOs = GameObject.FindGameObjectsWithTag("Maze");
+            for(int i = 0; i < GOs.Length; i++)
+            {
+                if (GOs[i].name == "005 ExitDoor(Clone)")
+                {
+                    ExitDoorBeacon.transform.position = GOs[i].transform.position;
+                    ExitDoorSound.Play();                    
+                }
+            }
+        }
 
         if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Space))
         {

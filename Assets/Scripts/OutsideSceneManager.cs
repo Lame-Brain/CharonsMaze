@@ -27,7 +27,7 @@ public class OutsideSceneManager : MonoBehaviour
         {
             Instantiate(tree[Random.Range(0, 3)], new Vector3(Random.Range(8.5f, 49.13f), -0.8f, Random.Range(-10.99f, 3.24f)), Quaternion.identity);
             Instantiate(tree[Random.Range(0, 3)], new Vector3(Random.Range(-48.7f, -9.56f), -0.8f, Random.Range(-10.99f, 3.24f)), Quaternion.identity);
-        }
+        }        
     }
 
     // Update is called once per frame

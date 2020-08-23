@@ -470,7 +470,7 @@ public class MazeObject : MonoBehaviour
             }
         }
 
-        GameObject.FindGameObjectWithTag("Ghost").transform.position = new Vector3((Random.Range(playerStartX - 3f, playerStartX + 3f)) * 10, 0, (Random.Range(playerStartY - 3f, playerStartY + 3f)) * 10);   //place the ghost
+        GameObject.FindGameObjectWithTag("Ghost").transform.position = new Vector3((Random.Range(playerStartX - 3f, playerStartX + 3f)) * 5, 0, (Random.Range(playerStartY - 3f, playerStartY + 3f)) * 5);   //place the ghost
         GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(playerStartX, -0.65f, playerStartY); //place the player        
         if (!GameManager.GAME.infir) Instantiate(prefabs[6], new Vector3(infirX, 0, infirY), Quaternion.identity); //INFIR
         if (!GameManager.GAME.serpt) Instantiate(prefabs[7], new Vector3(serptX, 0, serptY), Quaternion.identity); //SERPT

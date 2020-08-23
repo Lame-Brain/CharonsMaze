@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class OutsideSceneManager : MonoBehaviour
 {
     public GameObject[] tree;
-    public GameObject Charon;
+    public GameObject Charon, player;
     private float xCharon, yCharon, zCharon, bobCharon = 0.0005f;
-    public GameObject Ferry, conversationPanel, whyMePanel, howManyPanel, whoIsGhostPanel, how2LeavePanel, mazeRegenPanel, payTollPanel, broughtRunesPanel, gameMenu;
+    public GameObject Ferry, conversationPanel, whyMePanel, howManyPanel, whoIsGhostPanel, how2LeavePanel, mazeRegenPanel, payTollPanel, broughtRunesPanel, gameMenu, optionsMenu, confirmMenu;
     public GameObject mazeRegenBtn, broughtRunesBtn, payTollBtn;
     private float xFerry, yFerry, zFerry, bobFerry = 0.001f;
     public bool readyToPayToll = false;
@@ -51,6 +51,7 @@ public class OutsideSceneManager : MonoBehaviour
         if (GameManager.GAME.infir && GameManager.GAME.serpt && GameManager.GAME.eclyp && GameManager.GAME.drake) broughtRunesBtn.SetActive(true);
         if (!GameManager.GAME.infir || !GameManager.GAME.serpt || !GameManager.GAME.eclyp || !GameManager.GAME.drake) broughtRunesBtn.SetActive(false);
         payTollBtn.SetActive(readyToPayToll);
+
         if (Input.GetKeyUp(KeyCode.Escape))
         {            
             if (conversationPanel.activeSelf)
@@ -66,16 +67,24 @@ public class OutsideSceneManager : MonoBehaviour
             }
             else
             {
-                if (gameMenu.activeSelf) GameManager.GAME.PauseGame();
-                if (!gameMenu.activeSelf) GameManager.GAME.UnpauseGame();
-                gameMenu.SetActive(!gameMenu.activeSelf);
+                if (optionsMenu.activeSelf || confirmMenu.activeSelf)
+                {
+                    optionsMenu.SetActive(false);
+                    confirmMenu.SetActive(false);
+                }
+                else
+                {
+                    if (gameMenu.activeSelf) GameManager.GAME.UnpauseGame(player);
+                    if (!gameMenu.activeSelf) GameManager.GAME.PauseGame(player);
+                    gameMenu.SetActive(!gameMenu.activeSelf);                    
+                }
             }
         }
     }
 
     public void UnpauseGame()
     {
-        GameManager.GAME.UnpauseGame();
+        GameManager.GAME.UnpauseGame(player);
     }
 
     public void MazeRegen()

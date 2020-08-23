@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class MazeUIController : MonoBehaviour
 {
     public Image infirIMG, serptIMG, eclypIMG, drakeIMG, crossIMG;
-    public GameObject infirRunePanel, serptRunePanel, eclypRunePanel, drakeRunePanel, crossPanel;
+    public GameObject infirRunePanel, serptRunePanel, eclypRunePanel, drakeRunePanel, crossPanel, gameMenu, optionsMenu, confirmMenu, player;
     public Text infirStory, serptStory, eclypStory, drakeStory, crossStory;
     private int storyIndex;
     private bool hadCrossBefore = false;
@@ -38,13 +39,32 @@ public class MazeUIController : MonoBehaviour
         if (GameManager.GAME.cross) crossIMG.enabled = true;
         if (!GameManager.GAME.cross) crossIMG.enabled = false;
 
-        if(Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Space))
         {
-            if (infirRunePanel.activeSelf) { infirRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(); }
-            if (serptRunePanel.activeSelf) { serptRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(); }
-            if (eclypRunePanel.activeSelf) { eclypRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(); }
-            if (drakeRunePanel.activeSelf) { drakeRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(); }
-            if (crossPanel.activeSelf) { crossPanel.SetActive(false); GameManager.GAME.UnpauseGame(); }
+            if (infirRunePanel.activeSelf) { infirRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(player); Debug.Log(">>> INFIR PANEL UNPAUSE"); }
+            if (serptRunePanel.activeSelf) { serptRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(player); Debug.Log(">>> SERPT PANEL UNPAUSE"); }
+            if (eclypRunePanel.activeSelf) { eclypRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(player); Debug.Log(">>> ECLYP PANEL UNPAUSE"); }
+            if (drakeRunePanel.activeSelf) { drakeRunePanel.SetActive(false); GameManager.GAME.UnpauseGame(player); Debug.Log(">>> DRAKE PANEL UNPAUSE"); }
+            if (crossPanel.activeSelf) { crossPanel.SetActive(false); GameManager.GAME.UnpauseGame(player); Debug.Log(">>> CROSS PANEL UNPAUSE"); }
+
+        }
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if(!infirRunePanel.activeSelf && !serptRunePanel.activeSelf && !eclypRunePanel.activeSelf && !drakeRunePanel.activeSelf && !crossPanel.activeSelf) //no story panels are active
+            {
+                if (optionsMenu.activeSelf || confirmMenu.activeSelf)
+                {
+                    optionsMenu.SetActive(false);
+                    confirmMenu.SetActive(false);
+                }
+                else
+                {
+                    if (gameMenu.activeSelf) GameManager.GAME.UnpauseGame(player); 
+                        if (!gameMenu.activeSelf) GameManager.GAME.PauseGame(player);
+                    gameMenu.SetActive(!gameMenu.activeSelf);
+                }
+            }
         }
     }
 
@@ -63,6 +83,6 @@ public class MazeUIController : MonoBehaviour
 
     public void UnpauseGame()
     {
-        GameManager.GAME.UnpauseGame();
+        GameManager.GAME.UnpauseGame(player);
     }
 }

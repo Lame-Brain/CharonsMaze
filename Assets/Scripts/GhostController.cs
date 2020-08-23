@@ -22,6 +22,7 @@ public class GhostController : MonoBehaviour
     public bool canSeePlayer, playerIsInFront;
     public float fov;
     public GameObject hitWithCross, hitWithoutCross;
+    public AudioSource ghostAttack, ghostMiss, playerScream;
 
     void Start()
     {
@@ -65,8 +66,11 @@ public class GhostController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Space))
         {
-            if (hitWithCross.activeSelf) hitWithCross.SetActive(false);
-            GameManager.GAME.UnpauseGame();
+            if (hitWithCross.activeSelf)
+            {
+                hitWithCross.SetActive(false);
+                GameManager.GAME.UnpauseGame(player);
+            }
         }
     }
 
@@ -92,10 +96,10 @@ public class GhostController : MonoBehaviour
             if (hit.transform.tag == "Player" && Mathf.Abs(angle) <= fov) //YUP!
             {
                 if (ghost != State.preparing && ghost != State.attacking) { saved = ghost; ghost = State.preparing; aggressonCounter = 0; } //First see me? go to preparing state
-                if (!GameManager.GAME.paused && ghost == State.preparing) { aggressonCounter++; waypoint1 = new Vector3(playerX, 0, playerZ); Debug.Log(aggressonCounter + " of " + aggression); if (aggressonCounter > aggression) { ghost = State.attacking; Debug.Log("I WILL END YOU"); } } //in preparing and can still see me? count up to aggression (then attack)
+                if (!GameManager.GAME.paused && ghost == State.preparing) { aggressonCounter++; waypoint1 = new Vector3(playerX, 0, playerZ); Debug.Log(aggressonCounter + " of " + aggression); if (aggressonCounter > aggression) { ghost = State.attacking; Debug.Log("I WILL END YOU"); ghostAttack.Play(); } } //in preparing and can still see me? count up to aggression (then attack)
                 if (ghost == State.attacking)
                 {
-                    //.PLAY SOUND
+                    //.PLAY SOUND                    ghostAttack.Play();
                     target = new Vector3(playerX, 0, playerZ);
                 }
             }
@@ -107,6 +111,7 @@ public class GhostController : MonoBehaviour
                 if(ghost == State.attacking) //Lose the ghost
                 {
                     //.PLAY SOUND
+                    ghostMiss.Play();
                     ghost = State.hunting;
                 }
             }
@@ -121,17 +126,26 @@ public class GhostController : MonoBehaviour
             if (GameManager.GAME.cross)// player has cross
             {
                 hitWithCross.SetActive(true);
-                GameManager.GAME.PauseGame();
-                GameObject.FindGameObjectWithTag("Ghost").transform.position = new Vector3((Random.Range(other.transform.position.x - 3f, other.transform.position.x + 3f)) * 10, 0, (Random.Range(other.transform.position.y - 3f, other.transform.position.y + 3f)) * 10);   //displace the ghost
+                GameManager.GAME.PauseGame(player);
                 GameManager.GAME.cross = false;
                 GameManager.MAZE.SpawnCross();
                 //play sound
+                ghostMiss.Play();
             }
             else //Player does not have cross
             {
+                GameManager.GAME.PauseGame(other.gameObject);
                 hitWithoutCross.SetActive(true);
                 //play sound
+                playerScream.Play();
             }
         }
+    }
+
+    public void MoveGhost()
+    {
+        float x = transform.position.x; float y = transform.position.y;
+        GameObject.FindGameObjectWithTag("Ghost").transform.position = new Vector3((Random.Range(x - 3f, x + 3f)) * 5, 0, (Random.Range(y - 3f, y + 3f)) * 5);   //displace the ghost
+        ghost = State.moving;
     }
 }

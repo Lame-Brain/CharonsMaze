@@ -31,7 +31,7 @@ public class PickupController : MonoBehaviour
            3. destroy gameobject
            public bool infir, serpt, eclyp, drake, cross;*/
         //Debug.Log(other.tag + " picked up " + this.tag);
-        GameManager.GAME.PauseGame();
+        GameManager.GAME.PauseGame(GameObject.FindGameObjectWithTag("Player"));
         GameObject go = GameObject.FindGameObjectWithTag("Conversation");
         if (this.tag == "INFIR_Rune" && !GameManager.GAME.infir)
         {

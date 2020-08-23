@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public static MazeObject MAZE;
     public static GameManager GAME;
     public bool infir, serpt, eclyp, drake, cross, paused;
-    public bool MazeFirstTime = true, EnteredGardenFromMaze = false, MazeIsDrawn = false;    
+    public bool MazeFirstTime = true, EnteredGardenFromMaze = false, MazeIsDrawn = false;
+    public AudioSource footsteps, door;
 
     void Awake()
     {
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
                 if (hit.collider.tag == "Door")
                 {
                     hit.collider.gameObject.SetActive(false);
+                    if(!door.isPlaying) door.Play(); //play door open sound
                 }
 
                 if (hit.collider.tag == "GoldDoor")
@@ -78,27 +80,28 @@ public class GameManager : MonoBehaviour
                         EnteredGardenFromMaze = true;
                         done = true;
                     }
+                    if (!door.isPlaying) door.Play();
                 }
 
                 if(hit.collider.tag == "Charon")
                 {                    
-                    PauseGame();
+                    PauseGame(GameObject.FindGameObjectWithTag("Player"));
                     GameObject.FindGameObjectWithTag("SceneManager").GetComponent<OutsideSceneManager>().conversationPanel.SetActive(true);
                 }
             }
         }
     }
 
-    public void PauseGame()
+    public void PauseGame(GameObject player)
     {
-        GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>().enabled = false;
+        player.GetComponent<RigidbodyFirstPersonController>().enabled = false;
         paused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
-    public void UnpauseGame()
+    public void UnpauseGame(GameObject player)
     {
-        GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>().enabled = true;
+        player.GetComponent<RigidbodyFirstPersonController>().enabled = true;
         paused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

@@ -783,6 +783,7 @@ MonoBehaviour:
   goldDoor: {fileID: 919535792687061004, guid: c7a0b3276ea72554e8091002af6fe350, type: 3}
   floor: {fileID: 4226812056394171034, guid: 0767ad20512587243a6fa69e150ce3de, type: 3}
   ceiling: {fileID: 5694059698955427807, guid: 8af079f81e53e8d4a9ebea964735b922, type: 3}
+  MazeExitDoor: {fileID: 0}
 --- !u!114 &523145668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,6 +1105,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1150657196}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &606525268
 MonoBehaviour:
@@ -1872,8 +1884,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1200, y: 680}
+  m_AnchoredPosition: {x: 10, y: 10}
+  m_SizeDelta: {x: 1200, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1954731280
 MonoBehaviour:
@@ -1901,22 +1913,22 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 50
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "You step off the boat and onto the pier, but you have no memory of boarding
-    a boat, or of how you came to this place. You turn, and the ghostly figure of
-    Charon, Ferryman of Hades greets you with silence.\r\n\n\u201CWhere am I?\u201D
-    You ask.\r\n\nCharon only points behind you, to a building peeking from the heavy
-    fog. \u201CLABYRINTH\u2026\u201D he intones, his voice low and drawn out.\r\n\n\u201CAm
-    I dead?\u201D\r\n\nCharon shurgs. \u201CNOT YET\u2026\u201D\r\n\n \u201CThen
-    why am I here?\u201D\r\n\n\u201CANCESTOR SPIRIT\u2026 WISHES TO ESCAPE\u2026
-    BRING THE RUNES HERE\u2026\u201D\r\n\n\u201CYou want me to bring you runes from
-    the Labyrinth? That is why I am here?\u201D\r\n\nCharon does not respond, only
-    looks at you.\r\n\n\u201CIs my ancestor\u2019s spirit dangerous?\u201D\r\n\n\u201CVERY\u2026\u201D\r\n"
+    a boat, nor of how you came to this place. You turn and before you is the the
+    ghostly figure of Charon, Ferryman of Hades. He greets you with silence.\r\n\n\u201CWhere
+    am I?\u201D You ask.\r\n\nCharon points behind you, to a building peeking from
+    the heavy fog. \u201CLABYRINTH\u2026\u201D he intones, his voice low and drawn
+    out.\r\n\n\u201CAm I dead?\u201D\r\n\nCharon shurgs. \u201CNOT YET\u2026\u201D\r\n\n
+    \u201CThen why am I here?\u201D\r\n\n\u201CANCESTOR SPIRIT\u2026 WISHES TO ESCAPE\u2026
+    YOU WILL BRING RUNES HERE\u2026\u201D\r\n\n\u201CYou want me to bring you runes
+    from the Labyrinth? That's why I am here?\u201D\r\n\nCharon does not respond,
+    only looks at you.\r\n\n\u201CIs my ancestor\u2019s spirit dangerous?\u201D\r\n\n\u201CVERY\u2026\u201D"
 --- !u!222 &1954731281
 CanvasRenderer:
   m_ObjectHideFlags: 0

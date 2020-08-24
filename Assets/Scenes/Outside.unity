@@ -365,7 +365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47523118}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 4.4, z: 5.1}
+  m_LocalPosition: {x: 0, y: 4.4, z: 5}
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1666,9 +1666,9 @@ RectTransform:
   m_Father: {fileID: 48222844}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -589, y: 310}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &227360548
@@ -1783,8 +1783,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.7999268, y: 59.3}
-  m_SizeDelta: {x: 951, y: 143.27933}
+  m_AnchoredPosition: {x: -1.7999268, y: -33.639}
+  m_SizeDelta: {x: 951, y: 329.15707}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &271891988
 MonoBehaviour:
@@ -1806,11 +1806,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 01cd679a1b9ee48bf9c546f6ce2cb97e, type: 3}
-    m_FontSize: 32
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1818,8 +1818,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You demand of Charon \u201CI wish to pay the Toll, Specter!\u201D\r\nIn
-    your hand, as if they had always been there, are two coins.\r\n\u201CARE YOU
+  m_Text: "You demand of Charon \u201CI wish to pay the Toll, Specter!\u201D\r\n\nIn
+    your hand, as if they had always been there, are two coins.\r\n\n\u201CARE YOU
     CERTAIN, MORTAL?\u201D\r\n\n"
 --- !u!222 &271891989
 CanvasRenderer:
@@ -2903,11 +2903,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 01cd679a1b9ee48bf9c546f6ce2cb97e, type: 3}
-    m_FontSize: 32
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -2915,9 +2915,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You complain to Charon \u201CThe Labyrinth is impassible! I cannot proceed!\u201D\r\n\u201CPERHAPS
-    YOUR LUCK IS BAD... PERHAPS YOU ARE SIMPLY BAD AT LABYRINTHS\u201D\r\n\u201CWhatever.
-    Can you fix it or not?\u201D\r\n\u201CIF YOU WISH.\u201D\r\n"
+  m_Text: "You complain to Charon \u201CThe Labyrinth is impassible! I cannot proceed!\u201D\r\n\n\u201CPERHAPS
+    YOUR LUCK IS BAD... PERHAPS YOU ARE SIMPLY BAD AT LABYRINTHS\u201D\r\n\n\u201CWhatever.
+    Can you fix it or not?\u201D\r\n\n\u201CIF YOU WISH.\u201D\r\n"
 --- !u!222 &418616645
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3105,9 +3105,9 @@ RectTransform:
   m_Father: {fileID: 48222844}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -389, y: 310}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &465767846
@@ -3557,9 +3557,9 @@ RectTransform:
   m_Father: {fileID: 48222844}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 310}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &561646285
@@ -4642,8 +4642,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.7998962, y: -276.06}
-  m_SizeDelta: {x: -49.00006, y: -594.55396}
+  m_AnchoredPosition: {x: -1.7998962, y: -296.46}
+  m_SizeDelta: {x: -49.00006, y: -635.336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &703174802
 MonoBehaviour:
@@ -5146,7 +5146,7 @@ PrefabInstance:
     - target: {fileID: -2660592063981185491, guid: 3442409275d7c27479991a96ca346d7a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: -2660592063981185491, guid: 3442409275d7c27479991a96ca346d7a,
         type: 3}
@@ -5166,7 +5166,7 @@ PrefabInstance:
     - target: {fileID: 1847963319772113601, guid: 3442409275d7c27479991a96ca346d7a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.32
+      value: -0.28
       objectReference: {fileID: 0}
     - target: {fileID: 1847963319772113601, guid: 3442409275d7c27479991a96ca346d7a,
         type: 3}
@@ -5259,8 +5259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.7999268, y: -1.4}
-  m_SizeDelta: {x: 951, y: 264.57416}
+  m_AnchoredPosition: {x: -1.7999268, y: -12.1}
+  m_SizeDelta: {x: 951, y: 286.01843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761435419
 MonoBehaviour:
@@ -5282,11 +5282,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 01cd679a1b9ee48bf9c546f6ce2cb97e, type: 3}
-    m_FontSize: 32
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -5294,9 +5294,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You ask Charon \u201CHow do I leave here?\u201D\r\n\u201CBRING ME THE
-    RUNES\u2026. TO RETURN TO LIFE\u2026\u201D\r\n\u201CThat is my only option?\u201D\r\n\u201CPAY
-    MY TOLL\u2026 CROSS THE STYX\u2026 PASS FROM MORTAL REALM\u2026\u201D\r\n\u201CGot
+  m_Text: "You ask Charon \u201CHow do I leave here?\u201D\r\n\n\u201CBRING ME THE
+    RUNES\u2026. TO RETURN TO LIFE\u2026\u201D\r\n\n\u201CThat is my only option?\u201D\r\n\n\u201CPAY
+    MY TOLL\u2026 CROSS THE STYX\u2026 PASS FROM MORTAL REALM\u2026\u201D\r\n\n\u201CGot
     it, get the runes or die. Great.\u201D\r\n"
 --- !u!222 &761435420
 CanvasRenderer:
@@ -6034,11 +6034,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 01cd679a1b9ee48bf9c546f6ce2cb97e, type: 3}
-    m_FontSize: 32
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -6046,9 +6046,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You ask Charon \u201CHow many Runes are there?\u201D\r\n\u201CFOUR\u2026
-    HIDDEN IN THE DARK\u2026\u201D\r\n\u201CFour Runes, and I just bring them to
-    you? That is all?\u201D\r\n\u201CBRING ME\u2026 THE RUNES\u2026\u201D\r\n"
+  m_Text: "You ask Charon \u201CHow many Runes are there?\u201D\r\n\n\u201CFOUR\u2026
+    HIDDEN IN THE DARK\u2026\u201D\r\n\n\u201CFour Runes, and I just bring them to
+    you? That is all?\u201D\r\n\n\u201CBRING ME\u2026 THE RUNES\u2026\u201D\r\n"
 --- !u!222 &831567897
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7257,9 +7257,9 @@ RectTransform:
   m_Father: {fileID: 48222844}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -489, y: 310}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1054693205
@@ -7458,8 +7458,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.7998962, y: -170.56}
-  m_SizeDelta: {x: -49.00006, y: -383.55743}
+  m_AnchoredPosition: {x: -1.7998962, y: -263.5}
+  m_SizeDelta: {x: -49.00006, y: -569.4348}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075581040
 MonoBehaviour:
@@ -8545,11 +8545,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 01cd679a1b9ee48bf9c546f6ce2cb97e, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -8558,9 +8558,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "You ask Charon \u201CTell me about this Ancestor spirit, who was it in
-    life?\u201D\r\n\u201CYOUR ANCIENT ANCESTOR\u2026 MURDERER\u2026 DARKNESS AND
-    CHAOS\u2026\u201D\r\n\u201CBut who was it? What was their name?\u201D\r\n\u201CUNIMPORTANT\u2026
-    GONE\u2026 ONLY DARKNESS AND CHAOS REMAINS\u2026\u201D\r\n\n"
+    life?\u201D\r\n\n\u201CYOUR ANCIENT ANCESTOR\u2026 EVIL... MURDERER\u2026 LIAR\u2026\u201D\r\n\n\u201CBut
+    who was it? What was their name?\u201D\r\n\n\u201CUNIMPORTANT\u2026 GONE\u2026
+    ONLY DARKNESS AND CHAOS REMAINS\u2026\u201D\r\n\n"
 --- !u!222 &1302700133
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8733,8 +8733,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.7999268, y: -46.2}
-  m_SizeDelta: {x: 951, y: 354.27045}
+  m_AnchoredPosition: {x: -1.7999268, y: -66.6}
+  m_SizeDelta: {x: 951, y: 395.05756}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338602999
 MonoBehaviour:
@@ -8756,11 +8756,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 01cd679a1b9ee48bf9c546f6ce2cb97e, type: 3}
-    m_FontSize: 32
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -8768,11 +8768,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You announce to Charon: \u201CI have brought all four Runes!\u201D\r\n\u201CGOOD\u2026
-    NOW DESTROY THEM\u201D\r\n\u201CDestroy them? Will that banish the spirit?\u201D\r\n\u201CNOT
+  m_Text: "You announce to Charon: \u201CI have brought all four Runes!\u201D\r\n\n\u201CGOOD\u2026
+    NOW DESTROY THEM\u201D\r \n\n\u201CDestroy them? Will that banish the spirit?\u201D\r\n\n\u201CNOT
     BANISH\u2026 FREE\u2026 I WILL RETURN YOU TO LIFE\u2026 SPIRIT WILL RETURN WITH
-    YOU\u2026\u201D\r\n\u201CWhat!? Return with me!? Why!?\u201D\r\n \u201CYOU HAVE
-    THREE OPTIONS\u2026 DESTROY THE RUNES AND LIVE\u2026 PAY MY TOLL AND DIE\u2026
+    YOU\u2026\u201D\r\n\n\u201CWhat!? Return with me!? Why!?\u201D\r\n\n \u201CYOU
+    HAVE THREE OPTIONS\u2026 DESTROY THE RUNES AND LIVE\u2026 PAY MY TOLL AND DIE\u2026
     REMAIN HERE FOREVER...\u2026\u201D\r\n"
 --- !u!222 &1338603000
 CanvasRenderer:
@@ -9719,8 +9719,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.7998962, y: -231.24}
-  m_SizeDelta: {x: -49.00006, y: -504.90414}
+  m_AnchoredPosition: {x: -1.7998962, y: -241.97}
+  m_SizeDelta: {x: -49.00006, y: -526.2806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1492196272
 MonoBehaviour:
@@ -10072,11 +10072,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 01cd679a1b9ee48bf9c546f6ce2cb97e, type: 3}
-    m_FontSize: 32
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -10084,11 +10084,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You ask Charon \u201CWhy do you need me to gather the Runes?\u201D\r\n\u201CRUNES
-    ARE BOUND TO ANCESTOR\u2026 ONLY FAMILY MAY TAKE THE RUNES\u201D\r\n\u201CFine,
+  m_Text: "You ask Charon \u201CWhy do you need me to gather the Runes?\u201D\r\n\n\u201CRUNES
+    ARE BOUND TO ANCESTOR\u2026 ONLY FAMILY MAY TAKE THE RUNES\u201D\r\n\n\u201CFine,
     only someone of the Spirit\u2019s bloodline can handle the Runes, but surely
-    they have been there a while? Why now? Why me?\u201D\r\n\u201CSPIRIT WISHES TO
-    ESCAPE\u2026 IT IS CLOSE\u2026 BRING ME THE RUNES\u2026\u201D\r\n"
+    they have been there a while? Why now? Why me?\u201D\r\n\n\u201CSPIRIT WISHES
+    TO ESCAPE\u2026 IT IS CLOSE\u2026 BRING ME THE RUNES\u2026\u201D\r\n"
 --- !u!222 &1576927665
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11212,9 +11212,9 @@ RectTransform:
   m_Father: {fileID: 48222844}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -289, y: 310}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 350, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1729728886
@@ -11253,7 +11253,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -80}
+  m_AnchoredPosition: {x: 680, y: -25}
   m_SizeDelta: {x: 450, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1729728888
@@ -13432,7 +13432,7 @@ PrefabInstance:
     - target: {fileID: 5878642269445446820, guid: 86c33b368089e024394bb59ebce7873e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.11
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5878642269445446820, guid: 86c33b368089e024394bb59ebce7873e,
         type: 3}

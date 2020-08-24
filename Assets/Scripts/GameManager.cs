@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static MazeObject MAZE;
     public static GameManager GAME;
     public bool infir, serpt, eclyp, drake, cross, paused;
-    public bool MazeFirstTime = true, EnteredGardenFromMaze = false, MazeIsDrawn = false;
+    public bool MazeFirstTime = true, EnteredGardenFromMaze = false, restartedFromMenu = false, MazeIsDrawn = false;
     public AudioSource footsteps, door;
 
     void Awake()
@@ -45,11 +45,18 @@ public class GameManager : MonoBehaviour
             MazeIsDrawn = true;
         }
 
-        if(SceneManager.GetActiveScene().name == "Outside" && EnteredGardenFromMaze)
+        if (SceneManager.GetActiveScene().name == "Outside" && EnteredGardenFromMaze)
         {
             GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.FindGameObjectWithTag("Respawn").transform.position;
             GameObject.FindGameObjectWithTag("Player").transform.rotation = GameObject.FindGameObjectWithTag("Respawn").transform.rotation;
             EnteredGardenFromMaze = false;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Outside" && restartedFromMenu)
+        {
+            GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
+            GameObject.FindGameObjectWithTag("Player").transform.rotation = GameObject.FindGameObjectWithTag("Spawn").transform.rotation;
+            restartedFromMenu = false;
         }
 
         if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Space))

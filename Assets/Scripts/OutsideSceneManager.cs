@@ -27,8 +27,8 @@ public class OutsideSceneManager : MonoBehaviour
         {
             Instantiate(tree[Random.Range(0, 3)], new Vector3(Random.Range(8.5f, 49.13f), -0.8f, Random.Range(-10.99f, 3.24f)), Quaternion.identity);
             Instantiate(tree[Random.Range(0, 3)], new Vector3(Random.Range(-48.7f, -9.56f), -0.8f, Random.Range(-10.99f, 3.24f)), Quaternion.identity);
-        }        
-    }
+        }       
+     }
 
     // Update is called once per frame
     void Update()
@@ -44,6 +44,8 @@ public class OutsideSceneManager : MonoBehaviour
         if (yFerry + bobFerry > 0) bobFerry = -0.001f;
         if (yFerry + bobFerry < -0.34) bobFerry = 0.001f;
         Ferry.transform.position = new Vector3(xFerry+bobFerry, yFerry + bobFerry, zFerry);
+
+        
 
         //UI STUFF (Charon Conversation)
         if (GameManager.GAME.MazeFirstTime) mazeRegenBtn.SetActive(false);

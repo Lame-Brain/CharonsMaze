@@ -253,11 +253,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 42
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -309,8 +309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -80, y: 25}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: -100, y: 37.5}
+  m_SizeDelta: {x: 200, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &941196861
 MonoBehaviour:
@@ -531,8 +531,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80, y: 25}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: 100, y: 37.5}
+  m_SizeDelta: {x: 200, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464963288
 MonoBehaviour:
@@ -695,14 +695,16 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "You take the runes into your hands, one by one, and crush them into dust.
-    It is surprisingly easy.\r\n\n\u201CTHE GHOST IS NOW FREE\u2026 IT WILL RETURN
-    TO LIFE WITH YOU\u2026\u201D\r\n\n\u201CWhat happens then?\u201D You ask Charon.\r\n\n\u201CMURDER\u2026
-    DARKNESS\u2026 CHAOS\u2026\u201D\r\n\n\u201CBut, why? Why all this to sow death
-    upon the living?\u201D\r\n\n\u201CMORE SOULS TO CROSS THE STYX\u2026 MORE COINS
-    TO ME, TO PAY FOR THEIR PASSAGE.\u201D\r\n\nYour vision dims as the world around
-    you fades. Suddenly, you wake up, safe in your own bed.\r\n\n\u201CWas it all
-    a dream? Was it a nightmare?\u201D You wonder.\r\n\n\u201CIT WAS NOT\u201D a
-    low, drawn out voice whispers from the shadows\u2026\r\n"
+    It is surprisingly easy.\r\n\n<color=maroon>\u201CTHE GHOST IS NOW FREE\u2026
+    IT WILL RETURN TO LIFE WITH YOU\u2026\u201D\r</color>\n\n<color=lightgrey>\u201CWhat
+    happens then?\u201D</color> You ask Charon.\r\n\n<color=maroon>\u201CMURDER\u2026
+    DARKNESS\u2026 CHAOS\u2026\u201D\r</color>\n\n<color=lightgrey>\u201CBut, why?
+    Why all this to sow death upon the living?\u201D\r</color>\n\n<color=maroon>\u201CMORE
+    SOULS TO CROSS THE STYX\u2026 MORE COINS TO ME, TO PAY FOR THEIR PASSAGE.\u201D\r</color>\n\nYour
+    vision dims as the world around you fades. Suddenly, you wake up, safe in your
+    own bed.\r\n\n<color=lightgrey>\u201CWas it all a dream? Was it a nightmare?\u201D</color>
+    You wonder.\r\n\n<color=maroon>\u201CIT WAS NOT\u201D</color> a low, drawn out
+    voice whispers from the shadows\u2026\r\n"
 --- !u!222 &1467098532
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1381,11 +1383,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 42
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

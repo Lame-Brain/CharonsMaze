@@ -7568,9 +7568,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b03cabaa776bb64198c97ffea63802b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 2.5
   seekRange: 10
-  aggression: 10
+  aggression: 15
   ghost: 0
   saved: 0
   canSeePlayer: 0
@@ -8012,9 +8012,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410f246bc3a82dd43944a344bd7cd2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightVariance: 2.5
-  minTime: 35
-  maxTime: 60
+  lowerLightIntensity: 0.3
+  maxLightIntensity: 1.3
+  speedOfChange: 0.02
 --- !u!108 &1946881914
 Light:
   m_ObjectHideFlags: 0

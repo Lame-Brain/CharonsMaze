@@ -21,6 +21,7 @@ TagManager:
   - SceneManager
   - Conversation
   - ExitBeacon
+  - Spawn
   layers:
   - Default
   - TransparentFX

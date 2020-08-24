@@ -39,7 +39,7 @@ public class GameEndController : MonoBehaviour
         GameManager.GAME.eclyp = false;
         GameManager.GAME.drake = false;
         GameManager.GAME.paused = false;
-        GameManager.GAME.EnteredGardenFromMaze = true;
+        GameManager.GAME.restartedFromMenu = true;
         SceneManager.LoadScene("Outside");
     }
 }

@@ -153,9 +153,9 @@ RectTransform:
   m_Father: {fileID: 2069924441}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -221}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 42}
   m_SizeDelta: {x: 287.33295, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &105391689
@@ -268,16 +268,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "You tell Charon \u201CYes, I am certain.\u201D and hand him your coins.\r\n\nAs
-    they pass to Charon\u2019s skeletal hand, they vanish. You step aboard Charon\u2019s
-    ferry, and quicker than you expect, you find yourself under way.\r\n\nYou drop
-    the runes into the waters of the Styx once you get a ways from shore. \u201CHa!
+  m_Text: "You tell Charon <color=lightgrey>\u201CYes, I am certain.\u201D and hand
+    him your coins.\r</color>\n\nAs they pass to Charon\u2019s skeletal hand, they
+    vanish. You step aboard Charon\u2019s ferry, and quicker than you expect, you
+    find that the pier is vanishing into the fog.\r\n\nYou drop the runes into the
+    waters of the Styx once you get a ways from shore. <color=lightgrey>\u201CHa!
     I foiled your plot Charon! No one will get those runes now! Even if I had to
-    die to prevent that Dark Spirit from escaping, at least I have accomplished something!\u201D\r\n\nCharon\u2019s
-    eye glints with what you swear is amusement. \u201CRUNES\u2026 BOUND TO SPIRIT\u2026
-    NOT TO YOU\u2026 THEY RETURN TO LABRYINTH\u201D\r\n\n\u201CBut without me, you
-    cannot retrieve them again! I still win!\u201D\r\n\nCharon still seems amused.
-    \u201CMANY ANCESTORS\u2026\u201D\r\n"
+    die to prevent that Dark Spirit from escaping, at least I have accomplished something!\u201D\r</color>\n\nCharon\u2019s
+    eye glints with what you swear is amusement. <color=maroon>\u201CRUNES\u2026
+    BOUND TO SPIRIT\u2026 NOT TO YOU\u2026 THEY RETURN TO LABRYINTH\u201D\r</color>\n\n<color=lightgrey>\u201CBut
+    without me, you cannot retrieve them again! I still win!\u201D\r</color>\n\nCharon
+    still seems amused. <color=maroon>\u201CMANY ANCESTORS\u2026\u201D\r</color>\n"
 --- !u!222 &501575098
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -628,8 +629,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -80, y: 25}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: -100, y: 37.5}
+  m_SizeDelta: {x: 200, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681376078
 MonoBehaviour:
@@ -780,11 +781,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 42
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -928,8 +929,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80, y: 25}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: 100, y: 37.5}
+  m_SizeDelta: {x: 200, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1493875628
 MonoBehaviour:
@@ -1080,11 +1081,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 42
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

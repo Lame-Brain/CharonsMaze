@@ -78,7 +78,7 @@ public class GhostController : MonoBehaviour
         if (ghost != State.waiting && ghost != State.preparing) //doesn't move if he is waiting or preparing
         {
             float adjustedSpeed = speed;
-            if (ghost == State.searching) adjustedSpeed = speed * 0.5f; //speed is different when searching and attacking
+            if (ghost == State.searching) adjustedSpeed = speed * 0.75f; //speed is different when searching and attacking
             if (ghost == State.attacking || ghost == State.hunting) adjustedSpeed = speed * 3;            
             if(!GameManager.GAME.paused) transform.position = Vector3.MoveTowards(transform.position, target, adjustedSpeed * Time.deltaTime); //move the sucker
         }
@@ -92,8 +92,8 @@ public class GhostController : MonoBehaviour
             if (Mathf.Abs(angle) <= 45) playerIsInFront = true;
             if (hit.transform.tag == "Player" && Mathf.Abs(angle) <= fov) //YUP!
             {
-                if (ghost != State.preparing && ghost != State.attacking) { saved = ghost; ghost = State.preparing; aggressonCounter = 0; } //First see me? go to preparing state
-                if (!GameManager.GAME.paused && ghost == State.preparing) { aggressonCounter++; waypoint1 = new Vector3(playerX, 0, playerZ); if (aggressonCounter > aggression) { ghost = State.attacking; ghostAttack.Play(); } } //in preparing and can still see me? count up to aggression (then attack)
+                if (ghost != State.preparing && ghost != State.attacking) { saved = ghost; ghost = State.preparing; aggressonCounter = 0; ghostAttack.Play(); } //First see me? go to preparing state
+                if (!GameManager.GAME.paused && ghost == State.preparing) { aggressonCounter++; waypoint1 = new Vector3(playerX, 0, playerZ); if (aggressonCounter > aggression) { ghost = State.attacking; } } //in preparing and can still see me? count up to aggression (then attack)
                 if (ghost == State.attacking)
                 {
                     //.PLAY SOUND                    ghostAttack.Play();
